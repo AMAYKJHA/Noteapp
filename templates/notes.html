@@ -1,0 +1,44 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NoteApp</title>
+  </head>
+  <style>
+    * {
+      padding: 0px;
+      margin: 0px;
+    }
+    #root {
+      height: 100vh;
+      background-image: url("{% static 'bg.jpg' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .flex-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+  <body>
+    <div id="root" class="flex-column">
+      {{% for note in notes %}}
+      <div class="note flex-column">
+        Title: {note.title}
+        <span class="content"> {note.content} </span>
+      </div>
+
+      {{% end for %}}
+    </div>
+  </body>
+</html>
