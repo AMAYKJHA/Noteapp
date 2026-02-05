@@ -48,7 +48,7 @@
       }
 
       .logout-btn {
-        background-color: #ff6b6b;
+        background-color: blue;
         color: white;
         border: none;
         padding: 10px 20px;
@@ -56,10 +56,6 @@
         cursor: pointer;
         text-decoration: none;
         font-weight: bold;
-      }
-
-      .logout-btn:hover {
-        background-color: #ff5252;
       }
 
       .add-note-form {
@@ -163,7 +159,7 @@
   <body>
     <div class="container">
       <header>
-        <h1>📝 My Notes</h1>
+        <h1>My Notes</h1>
         <div class="user-info">
           <span>Welcome, <strong>{{ user.username }}</strong></span>
           <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
