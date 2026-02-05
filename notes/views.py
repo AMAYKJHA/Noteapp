@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout, get_user_model
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.http import JsonResponse
 from .models import Note
 
 User = get_user_model()
@@ -69,3 +70,32 @@ class NoteView(View):
             )
         
         return redirect('notes')
+
+
+@login_required(login_url='login')
+def update_note(request, note_id):
+    note = get_object_or_404(Note, id=note_id, user=request.user)
+    
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        
+        if content:
+            note.title = title if title else 'Untitled'
+            note.content = content
+            note.save()
+        
+        return redirect('notes')
+    
+    return render(request, 'notes.html', {'notes': Note.objects.filter(user=request.user).order_by('-created_at'), 'edit_note': note})
+
+
+@login_required(login_url='login')
+def delete_note(request, note_id):
+    note = get_object_or_404(Note, id=note_id, user=request.user)
+    
+    if request.method == 'POST':
+        note.delete()
+        return redirect('notes')
+    
+    return redirect('notes')

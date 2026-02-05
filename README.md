@@ -37,3 +37,4 @@ Features:
 
 ![Login screen](static/screenshot1.png)
 ![Home screen](static/screenshot2.png)
+![Update and delete](static/screenshot3.png)
