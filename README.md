@@ -1,15 +1,3 @@
-### NAME: AMAY JHA
-
-### Roll no: 080BCT004
-
-### Group: A
-
-### Submitted to: Department of Electronics and Computer Engineering
-
-### Lab: CRUD App using Django
-
-Theory:
-
 ### Django
 
 Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. Built by experienced developers, it takes care of much of the hassle of web development, so you can focus on writing your app without needing to reinvent the wheel. It’s free and open source.
